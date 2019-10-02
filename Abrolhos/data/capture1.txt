@@ -1,0 +1,14 @@
+# Session	animalID	day	detector
+fieldTrip1	601	1	2
+fieldTrip1	602	1	6
+fieldTrip1	603	1	8
+fieldTrip1	604	1	9
+fieldTrip1	622	2	10
+fieldTrip1	613	2	11
+fieldTrip1	617	2	15
+fieldTrip1	624	3	6
+fieldTrip1	614	3	20
+fieldTrip1	625	4	3
+fieldTrip1	611	4	6
+fieldTrip1	612	4	11
+fieldTrip1	612	5	6
