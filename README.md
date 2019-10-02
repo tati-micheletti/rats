@@ -1,6 +1,6 @@
 ---
 title: "Rats Abrolhos"
-author: "Tati Micheletti / Instituto Brasileiro para Medicina da Conservacao"
+author: "Tati Micheletti / Instituto Brasileiro para Medicina da Conserva??o"
 date: "28 September 2019"
 output: pdf_document
 ---
@@ -36,9 +36,16 @@ g0.1 <- secr.fit(SB1, model = list(g0 ~ 1, sigma ~ 1), CL = TRUE,
                verify = FALSE, buffer = 200)
 
 densitySB1 <- derived(g0.1)
+```
 
-g0.1
-densitySB1
+Home range results (sigma estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(summary(g0.1)$predicted)
+```
+
+Density results (D estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(densitySB1)
 ```
 
 ### Santa Barbara 2
@@ -62,9 +69,16 @@ g0.2 <- secr.fit(SB2, model = list(g0 ~ 1, sigma ~ 1), CL = TRUE,
                verify = FALSE, buffer = 200)
 
 densitySB2 <- derived(g0.2)
+```
 
-g0.2
-densitySB2
+Home range results (sigma estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(summary(g0.2)$predicted)
+```
+
+Density results (D estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(densitySB2)
 ```
 
 ## RESULTS
