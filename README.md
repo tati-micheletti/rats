@@ -1,6 +1,6 @@
 ---
 title: "Rats Abrolhos"
-author: "Tati Micheletti / Instituto Brasileiro para Medicina da Conserva??o"
+author: "Tati Micheletti / Instituto Brasileiro para Medicina da Conservacao"
 date: "28 September 2019"
 output: pdf_document
 ---
@@ -15,7 +15,7 @@ googledrive::drive_deauth()
 ```
 
 ## Abrolhos 2019
-### Santa BÃ¡rbara 1
+### Santa Barbara 1
 
 ```{r SB1, echo = FALSE}
 captureSB1path <- preProcess(url = "https://drive.google.com/open?id=1YJEDbTS2Hs5m1LIPJNXzHYbRQMKREYoD", 
@@ -41,7 +41,7 @@ g0.1
 densitySB1
 ```
 
-### Santa BÃ¡rbara 2
+### Santa Barbara 2
 
 ```{r SB2, echo = FALSE}
 captureSB2path <- preProcess(url = "https://drive.google.com/open?id=1CXe-u9x41OtBCgLMhXP7o1OtpxZ0c0nr", 
