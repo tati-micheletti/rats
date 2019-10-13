@@ -15,7 +15,7 @@ googledrive::drive_deauth()
 ```
 
 ## Abrolhos 2019
-### Santa Bárbara 1
+### Santa Barbara 1
 
 ```{r SB1, echo = FALSE}
 captureSB1path <- preProcess(url = "https://drive.google.com/open?id=1YJEDbTS2Hs5m1LIPJNXzHYbRQMKREYoD", 
@@ -36,12 +36,19 @@ g0.1 <- secr.fit(SB1, model = list(g0 ~ 1, sigma ~ 1), CL = TRUE,
                verify = FALSE, buffer = 200)
 
 densitySB1 <- derived(g0.1)
-
-g0.1
-densitySB1
 ```
 
-### Santa Bárbara 2
+Home range results (sigma estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(summary(g0.1)$predicted)
+```
+
+Density results (D estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(densitySB1)
+```
+
+### Santa Barbara 2
 
 ```{r SB2, echo = FALSE}
 captureSB2path <- preProcess(url = "https://drive.google.com/open?id=1CXe-u9x41OtBCgLMhXP7o1OtpxZ0c0nr", 
@@ -62,9 +69,16 @@ g0.2 <- secr.fit(SB2, model = list(g0 ~ 1, sigma ~ 1), CL = TRUE,
                verify = FALSE, buffer = 200)
 
 densitySB2 <- derived(g0.2)
+```
 
-g0.2
-densitySB2
+Home range results (sigma estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(summary(g0.2)$predicted)
+```
+
+Density results (D estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(densitySB2)
 ```
 
 ## RESULTS

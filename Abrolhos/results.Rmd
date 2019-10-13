@@ -11,12 +11,12 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Abrolhos 2019
-### Santa Bárbara 1
+### Santa Barbara 1
 
 ```{r SB1, echo = FALSE, include=FALSE}
 library(secr)
-SB1 <- secr::read.capthist(captfile =  "C:/Users/Tati/Documents/GitHub/Abrolhos/data/capture1.txt", 
-                           trapfile = "C:/Users/Tati/Documents/GitHub/Abrolhos/data/detector1.txt")
+SB1 <- secr::read.capthist(captfile =  "C:/Users/Tati/Documents/GitHub/rats/Abrolhos/data/capture1.txt", 
+                           trapfile = "C:/Users/Tati/Documents/GitHub/rats/Abrolhos/data/detector1.txt")
 
 summary(SB1)
 g0.1 <- secr.fit(SB1, model = list(g0 ~ 1, sigma ~ 1), CL = TRUE,
@@ -36,12 +36,12 @@ Density results (D estimate, lcl = lowe95%CI; ucl = upper95%CI):
 knitr::kable(densitySB1)
 ```
 
-### Santa Bárbara 2
+### Santa Barbara 2
 
 ```{r SB2, echo = FALSE, include=FALSE}
 
-SB2 <- secr::read.capthist(captfile =  "C:/Users/Tati/Documents/GitHub/Abrolhos/data/capture1.txt", 
-                           trapfile = "C:/Users/Tati/Documents/GitHub/Abrolhos/data/detector2.txt")
+SB2 <- secr::read.capthist(captfile =  "C:/Users/Tati/Documents/GitHub/rats/Abrolhos/data/capture2.txt", 
+                           trapfile = "C:/Users/Tati/Documents/GitHub/rats/Abrolhos/data/detector2.txt")
 
 summary(SB2)
 g0.2 <- secr.fit(SB2, model = list(g0 ~ 1, sigma ~ 1), CL = TRUE,
