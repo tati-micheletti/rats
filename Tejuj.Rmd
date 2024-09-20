@@ -1,0 +1,89 @@
+---
+title: "Tejus Leao"
+author: "Tati Micheletti / Instituto Brasileiro para Medicina da Conservacao"
+date: "5 Julho 2023"
+output: pdf_document
+---
+
+```{r setup, eval = FALSE, include = FALSE}
+if(!require("Require")){
+  install.packages("Require")
+ library("Require")
+}
+Require("reproducible")
+Require("secr")
+```
+
+
+```{r workDir, eval = TRUE, include = FALSE}
+wd <- "C://Users//Tati//Documents//GitHub//rats//dataTeju//"
+```
+
+## FN Maio 2023
+### Leao Teiu
+
+```{r T, echo = FALSE, include = FALSE}
+capture <- paste0(wd, "capture1.txt")
+detector <- paste0(wd, "detector1.txt")
+
+T1 <- secr::read.capthist(captfile =  capture, 
+                           trapfile = detector)
+summary(T1)
+g0.1 <- secr::secr.fit(T1, model = list(g0 ~ 1, sigma ~ 1), CL = TRUE,
+               verify = FALSE, buffer = 200)
+
+densityT1 <- secr::derived(g0.1)
+```
+
+Home range results (sigma estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(summary(g0.1)$predicted)
+```
+
+Density results (D estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(densityT1)
+```
+
+### Leao Ratos
+
+```{r R, echo = FALSE, include = FALSE}
+wdr <- "C://Users//Tati//Documents//GitHub//rats//dataRats//"
+capture <- paste0(wdr, "capture1.txt")
+detector <- paste0(wdr, "detector1.txt")
+
+R1 <- secr::read.capthist(captfile =  capture, 
+                           trapfile = detector)
+
+summary(R1)
+g0.1r <- secr::secr.fit(R1, model = list(g0 ~ 1, sigma ~ 1), CL = TRUE,
+               verify = FALSE, buffer = 200)
+
+densityR1 <- secr::derived(g0.1r)
+```
+
+Home range results (sigma estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(summary(g0.1r)$predicted)
+```
+
+Density results (D estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(densityR1)
+```
+
+## RESULTADOS
+
+Para a área do Leao, 
+** Primeira amostragem **
+são calculados **12** teius/ha (CI95%: 7-21), 
+com home range de **48m** (CI95%: 34-69), e
+
+** Segunda amostragem **
+são calculados **12** teius/ha (CI95%: 7-20), 
+com home range de **48m** (CI95%: 35-67), e
+
+são calculados **64** ratos/ha (CI95%: 38-107), 
+com home range de **10m** (CI95%: 7-14)
+
+Para teiu, os resultados quase não melhoraram... Eu sugeriria mais uma rodada de armadilhagem quando possível. 

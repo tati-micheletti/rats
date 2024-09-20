@@ -1,0 +1,5 @@
+"file" "checksum" "filesize" "algorithm"
+"capture1.txt" "cc8742426b18685d" "793" "xxhash64"
+"capture2.txt" "69c4cdb0de3a5ad0" "563" "xxhash64"
+"detector1.txt" "e42f9e02e9938b12" "199" "xxhash64"
+"detector2.txt" "8c8b0e70aa187c3b" "199" "xxhash64"

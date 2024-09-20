@@ -1,0 +1,118 @@
+---
+title: "Rats Noronha"
+author: "Tati Micheletti / Instituto Brasileiro para Medicina da Conservacao"
+date: "5 Julho 2023"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include = FALSE, eval = FALSE}
+if(!require("Require")){
+  install.packages("Require")
+  library("Require")
+}
+Require("reproducible")
+Require("secr")
+```
+
+```{r workDir, include = FALSE, eval = TRUE}
+wd <- "C://Users//Tati//Documents//GitHub//rats//Rata//OriginalData//"
+```
+
+## Rata Janeiro 2023
+### Área Aberta
+### Desembarque - Buraco das Cabras
+```{r DBC, echo = FALSE, include = FALSE, eval = TRUE}
+capture <- paste0(wd, "captureJan23.txt")
+detector <- paste0(wd, "detectorJan23.txt")
+
+DBC1 <- secr::read.capthist(captfile =  capture, 
+                           trapfile = detector)
+
+summary(DBC1)
+g0.1 <- secr::secr.fit(DBC1, model = list(g0 ~ 1, sigma ~ 1), CL = TRUE,
+               verify = FALSE, buffer = 200)
+
+densityDBC1 <- secr::derived(g0.1)
+```
+
+Home range results (sigma estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(summary(g0.1)$predicted)
+```
+
+Density results (D estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(densityDBC1)
+```
+
+## Rata Fevereiro 2023
+### Área Florestal
+### Desembarque - Farol
+```{r DBF, echo = FALSE, include = FALSE}
+capture <- paste0(wd, "captureFeb23.txt")
+detector <- paste0(wd, "detectorFeb23.txt")
+
+DBF1 <- secr::read.capthist(captfile =  capture, 
+                           trapfile = detector)
+summary(DBF1)
+g0.2 <- secr::secr.fit(DBF1, model = list(g0 ~ 1, sigma ~ 1), CL = TRUE,
+               verify = FALSE, buffer = 200)
+
+densityDBF1 <- secr::derived(g0.2)
+```
+
+Home range results (sigma estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(summary(g0.2)$predicted)
+```
+
+Density results (D estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(densityDBF1)
+```
+
+## Rata Jun 2023
+### Area Arbustiva
+```{r AA, echo = FALSE, include = FALSE}
+capture <- paste0(wd, "captureJun23.txt")
+detector <- paste0(wd, "detectorJun23.txt")
+
+AA <- secr::read.capthist(captfile =  capture, 
+                           trapfile = detector)
+summary(AA)
+g0.3 <- secr::secr.fit(AA, model = list(g0 ~ 1, sigma ~ 1), CL = TRUE,
+               verify = FALSE, buffer = 200)
+
+densityAA <- secr::derived(g0.3)
+```
+
+Home range results (sigma estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(summary(g0.3)$predicted)
+```
+
+Density results (D estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(densityAA)
+```
+
+## RESULTADOS
+
+Para a área do Desembarque até o Buraco das Cabras, 
+são calculados **9** ratos/ha (CI95%: 5-18), 
+com home range de **25.54m** (CI95%: 17.50-37.27).  
+
+Para a área do Desembarque até o Farol, 
+são calculados **40** ratos/ha (CI95%: 19.9-81.58), 
+com home range de **12** (CI95%: 7-18).  
+
+Para a área Arbustiva, 
+são calculados **149** ratos/ha (CI95%: 63-351), 
+com home range de **8.28** (CI95%: 4-15).  
+
+Obs.: Os dados da Área Arbustiva estão bem ruins na minha opinião. Não acho que a confiança está boa. Se possível, eu sugeriria repetir o grid lá, com uma distância de 12m x 12m, com pelo menos mais uma coluna e uma linha de armadilhas (n = 30) e mais tempo. Eu acho super arriscado planejar a desratização com esses dados. Não ponho minha mão no fogo não. Tivemos muitos problemas: baixa taxa de captura, bicho fugindo, bicho morrendo... Sorry, parceiro, mas eu não arriscaria não.
+
+

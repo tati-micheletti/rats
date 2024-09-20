@@ -2,7 +2,10 @@
 title: "Rats Abrolhos"
 author: "Tati Micheletti / Instituto Brasileiro para Medicina da Conserva??o"
 date: "28 September 2019"
-output: pdf_document
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
@@ -11,7 +14,6 @@ require("reproducible")
 Require("secr")
 googledrive::drive_auth(email = gargle::gargle_oauth_email(),
                         use_oob = gargle::gargle_oob_default())
-googledrive::drive_deauth()
 ```
 
 ## Abrolhos 2019
@@ -90,3 +92,165 @@ For Santa Barbara 2, we have **2.17** rats/ha (CI95%: 0.34-14),
 with home range of **40m** (CI95%: 11.12-143.93).  
 
 Obs.: In my opinion, the deviation is really too big. We need to collect more data (ie. trapping for longer time and probably with a bigger grid...) ~TM
+
+
+### Siriba 1
+
+```{r Si1, echo = FALSE}
+captureSi1path <- preProcess(url = "https://drive.google.com/open?id=18vh4aGPZ_2u280vMOdro_O1DMOT2cyxW", 
+                  targetFile = "capture3.txt", 
+                  destinationPath = reproducible::checkPath(file.path(getwd(), "data"), 
+                                                            create = TRUE), overwrite = TRUE)
+
+detectorSi1path <- preProcess(url = "https://drive.google.com/open?id=1JywW6MS8uoyVwKUYQ1A_MBtJEL5h43lg", 
+                  targetFile = "detector3.txt",
+                  destinationPath = reproducible::checkPath(file.path(getwd(), "data"), 
+                                                            create = TRUE), overwrite = TRUE)
+
+Si1 <- secr::read.capthist(captfile =  captureSi1path$targetFilePath, 
+                           trapfile = detectorSi1path$targetFilePath)
+
+summary(Si1)
+g0.1 <- secr.fit(Si1, model = list(g0 ~ 1, sigma ~ 1), CL = TRUE,
+               verify = FALSE, buffer = 200)
+
+densitySi1 <- derived(g0.1)
+```
+
+Home range results (sigma estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(summary(g0.1)$predicted)
+```
+
+Density results (D estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(densitySi1)
+```
+
+## RESULTS
+
+For Siriba 1, we have **69** rats/ha (CI95%: 52-93), 
+with home range of **7.76m** (CI95%: 6.64-9.07).  
+
+## Abrolhos 2020
+### Santa Barbara 1
+
+```{r SB1.4, echo = FALSE}
+library(reproducible)
+library(secr)
+captureSB4path <- preProcess(url = "https://drive.google.com/open?id=1EJlxxQYyj4CwZcDrdEoA8J5kerihyEQe", 
+                  targetFile = "capture4.txt", 
+                  destinationPath = reproducible::checkPath(file.path(getwd(), "data"), 
+                                                            create = TRUE), overwrite = TRUE)
+
+detectorSB4path <- preProcess(url = "https://drive.google.com/open?id=1w3eijp6dhYGDIINXoZPwNZeMMW9ykVkQ", 
+                  targetFile = "detector4.txt",
+                  destinationPath = reproducible::checkPath(file.path(getwd(), "data"), 
+                                                            create = TRUE), overwrite = TRUE)
+
+SB1.4 <- secr::read.capthist(captfile =  captureSB4path$targetFilePath, 
+                           trapfile = detectorSB4path$targetFilePath)
+
+summary(SB1.4)
+g0.4 <- secr.fit(SB1.4, model = list(g0 ~ 1, sigma ~ 1), CL = TRUE,
+               verify = FALSE, buffer = 200)
+
+# densitySB1.4 <- secr::derived(g0.4)
+```
+
+<!-- Home range results (sigma estimate, lcl = lowe95%CI; ucl = upper95%CI): -->
+<!-- ```{r, echo = FALSE} -->
+<!-- knitr::kable(summary(g0.4)$predicted) -->
+<!-- ``` -->
+
+<!-- Density results (D estimate, lcl = lowe95%CI; ucl = upper95%CI): -->
+<!-- ```{r, echo = FALSE} -->
+<!-- knitr::kable(densitySB1.4) -->
+<!-- ``` -->
+
+## RESULTS
+
+Data sparse, model fitting failed (i.e. potentially because not all individuals were marked)
+<!-- For Santa Barbara 1 (2020), we have **69** rats/ha (CI95%: 52-93),  -->
+<!-- with home range of **7.76m** (CI95%: 6.64-9.07).   -->
+
+### Santa Barbara 2
+
+```{r SB1.5, echo = FALSE}
+library(reproducible)
+library(secr)
+captureSB5path <- preProcess(url = "https://drive.google.com/open?id=1DB7G3x90cQtdPV_XDRuTG3IXcvBDXbu2", 
+                  targetFile = "capture5.txt", 
+                  destinationPath = reproducible::checkPath(file.path(getwd(), "data"), 
+                                                            create = TRUE), overwrite = TRUE)
+
+detectorSB5path <- preProcess(url = "https://drive.google.com/open?id=1mmsxpM3ET_Q4hqbCGz-q3EcncZFVPiNS", 
+                  targetFile = "detector5.txt",
+                  destinationPath = reproducible::checkPath(file.path(getwd(), "data"), 
+                                                            create = TRUE), overwrite = TRUE)
+
+SB1.5 <- secr::read.capthist(captfile =  captureSB5path$targetFilePath, 
+                           trapfile = detectorSB5path$targetFilePath)
+
+summary(SB1.5)
+g0.5 <- secr.fit(SB1.5, model = list(g0 ~ 1, sigma ~ 1), CL = TRUE,
+               verify = FALSE, buffer = 200)
+
+densitySB1.5 <- secr::derived(g0.5)
+```
+
+Home range results (sigma estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(summary(g0.5)$predicted)
+```
+
+Density results (D estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(densitySB1.5)
+```
+
+## RESULTS
+
+Data sparse, model fitting failed (i.e. potentially because not all individuals were marked)
+For Santa Barbara 2 (2020), we have **14** rats/ha (CI95%: 10-23),
+with home range of **19m** (CI95%: 16-24).
+
+### Redonda 1
+
+```{r R1, echo = FALSE}
+library(reproducible)
+library(secr)
+captureR1path <- preProcess(url = "https://drive.google.com/open?id=1xblSTYnZ9B4pSEXJwHYnU7UtxF6Rius9", 
+                  targetFile = "capture6.txt", 
+                  destinationPath = reproducible::checkPath(file.path(getwd(), "data"), 
+                                                            create = TRUE), overwrite = TRUE)
+
+detectorR1path <- preProcess(url = "https://drive.google.com/open?id=1Pmb2y293I0TnnxeWXuq73ChgpvdLN7AZ", 
+                  targetFile = "detector6.txt",
+                  destinationPath = reproducible::checkPath(file.path(getwd(), "data"), 
+                                                            create = TRUE), overwrite = TRUE)
+
+R1 <- secr::read.capthist(captfile =  captureR1path$targetFilePath, 
+                           trapfile = detectorR1path$targetFilePath)
+
+summary(R1)
+g0.6 <- secr.fit(R1, model = list(g0 ~ 1, sigma ~ 1), CL = TRUE,
+               verify = FALSE, buffer = 200)
+
+densityR1 <- secr::derived(g0.6)
+```
+
+Home range results (sigma estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(summary(g0.6)$predicted)
+```
+
+Density results (D estimate, lcl = lowe95%CI; ucl = upper95%CI):
+```{r, echo = FALSE}
+knitr::kable(densityR1)
+```
+
+## RESULTS
+
+For Redonda 1 (2020), we have *27* rats/ha (CI95%: 18-38),
+with home range of *16m* (CI95%: 13-19).
