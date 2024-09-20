@@ -1,9 +1,11 @@
 ---
 title: "Rats Abrolhos"
-author: "Tati Micheletti / Instituto Brasileiro para Medicina da Conserva??o"
+author: "Tati Micheletti / Instituto Brasileiro para Medicina da Conservacao"
 date: "28 September 2019"
 output: pdf_document
 ---
+
+This repository was created to process Spatially Explicit Capture-Recapture data for rat eradication on the Abrolhos Arquipelago in Brazil. 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
